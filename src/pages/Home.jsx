@@ -10,13 +10,13 @@ const Home = () => {
   return (
     <div style={{ padding: "15px" }}>
       <Grid container spacing={3}>
-        <Grid item size={{ xs: 12, md: 3 }}>
+        <Grid size={{ xs: 12, md: 3 }}>
           <TopLeaguesAccordion />
         </Grid>
-        <Grid item size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <ControlledCarousel />
         </Grid>
-        <Grid item size={{ xs: 12, md: 3 }}>
+        <Grid size={{ xs: 12, md: 3 }}>
           <TopLeaguesAccordion />
         </Grid>
       </Grid>

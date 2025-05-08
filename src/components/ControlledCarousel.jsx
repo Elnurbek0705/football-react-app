@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
 import TopMatchCarousel from "./TopMatchCarousel";
 import { Stack } from "@mui/material";
 
