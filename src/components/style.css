@@ -1,0 +1,62 @@
+.navbar {
+  background-color: var(--navbar-bg);
+}
+
+.navbar__search {
+  background-color: var(--button-bg);
+  color: var(--text-color) !important;
+  font-size: 18px;
+  border-radius: 15px;
+  padding: 0.5rem 1.5rem;
+  margin: 0;
+  border: 0 !important;
+}
+
+.navbar__search:focus,
+navbar__search:focus-visible {
+  outline: 2px solid var(--primary-color);
+}
+
+.button_styles {
+  border: 0 !important;
+  color: var(--text-color) !important;
+  border-radius: 15px !important;
+  padding: 0.5rem 1.5rem !important;
+}
+
+.navbar button {
+  background-color: var(--button-bg);
+}
+.navbar button.active {
+  background-color: var(--primary-color);
+}
+
+/* accordion */
+
+.accordion {
+  background-color: var(--navbar-bg) !important;
+  width: 100%;
+  color: var(--text-color) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.accordion .expand__icon {
+  color: var(--text-color) !important;
+}
+
+.accordion .accordion__item:hover {
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* carousel */
+
+.main__carousel {
+  background-image: url("../assets/carouselbg.svg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  overflow: hidden;
+}
