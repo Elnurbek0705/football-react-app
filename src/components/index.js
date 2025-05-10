@@ -5,4 +5,5 @@ export {default as ThemeSwitchButton} from "./ThemeSwitchButton"
 export {default as TopLeaguesAccordion} from "./TopLeaguesAccordion"
 export {default as ControlledCarousel} from "./ControlledCarousel"
 export {default as TopMatchCarousel} from "./TopMatchCarousel"
+export {default as UserAvatar} from "./UserAvatar"
 

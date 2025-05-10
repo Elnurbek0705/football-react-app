@@ -52,11 +52,106 @@ navbar__search:focus-visible {
 /* carousel */
 
 .main__carousel {
-  background-image: url("../assets/carouselbg.svg");
+  /* background-image: var(--carousel-bg); */
+
+  background-image: url(../assets/carousel_bg.svg);
+  height: 300px;
   background-size: cover;
   background-position: center;
   border-radius: 20px;
-  padding: 20px;
-  color: white;
+  color: var(--text-color);
   overflow: hidden;
+}
+
+.team__emblems {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+}
+
+.team__emblems div.match__Time {
+  width: 230px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.team__emblem {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  border: 5px solid var(--button-bg);
+  overflow: hidden;
+  padding: 5px;
+  background-color: var(--bg-color);
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.team__emblem img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* TopLeaguesAccordion*/
+
+.accordion__title {
+  font-weight: bold;
+}
+
+.accordion__details {
+  padding: 0 !important;
+}
+
+.accordion__item {
+  border-bottom: 1px solid #333;
+  padding: 8px 16px;
+}
+
+.accordion__logo-wrapper {
+  width: 40px;
+  height: 40px;
+  background-color: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.accordion__logo-wrapper.dark {
+  background-color: #1f1f1f;
+}
+
+.accordion__logo {
+  object-fit: contain;
+}
+
+.accordion__logo.invert {
+  filter: invert(1);
+}
+
+.accordion__text {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.accordion__empty {
+  text-align: center;
+  padding: 32px 0;
+  color: #666;
+}
+
+.accordion__empty.dark {
+  color: #bbb;
+}
+
+.accordion__empty-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
 }

@@ -11,6 +11,7 @@ app.use(cors({ credentials: true, origin: true }));
 const API_KEY = process.env.API_KEY;
 const BASE_URL = "https://api.football-data.org/v4";
 
+// 🟢 Barcha matchlar
 app.get("/api/matches", async (req, res) => {
   try {
     const response = await axios.get(`${BASE_URL}/matches`, {
@@ -22,6 +23,7 @@ app.get("/api/matches", async (req, res) => {
   }
 });
 
+// 🟢 Ma'lum bir musobaqadagi matchlar
 app.get("/api/competitions/:code/matches", async (req, res) => {
   try {
     const { code } = req.params;
@@ -34,6 +36,7 @@ app.get("/api/competitions/:code/matches", async (req, res) => {
   }
 });
 
+// 🟢 Jamoaga tegishli matchlar (SCHEDULED)
 app.get("/api/teams/:id/matches", async (req, res) => {
   try {
     const { id } = req.params;
@@ -46,9 +49,23 @@ app.get("/api/teams/:id/matches", async (req, res) => {
   }
 });
 
+// 🟢 Musobaqalar ro'yxati
 app.get("/api/competitions", async (req, res) => {
   try {
     const response = await axios.get(`${BASE_URL}/competitions`, {
+      headers: { "X-Auth-Token": API_KEY },
+    });
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 🔴 STANDINGS endpointdagi xatolikni tuzatildi
+app.get("/api/competitions/:id/standings", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const response = await axios.get(`${BASE_URL}/competitions/${id}/standings`, {
       headers: { "X-Auth-Token": API_KEY },
     });
     res.json(response.data);

@@ -1,23 +1,50 @@
+:root {
+   --bg-color: #f9f9f9;
+   --text-color: #1e1e1e;
+   --primary-color: #8a8a8a;
+   --navbar-bg: #ffffff;
+   --button-bg: #E5E7EB;
+   --border-color: #e0e0e0;
+ }
+ 
+ .dark {
+   --bg-color: #0B090A;
+   --text-color: #ffffff;
+   --primary-color: #490fff;
+   --navbar-bg: #121212;
+   --button-bg: #1F1F1F;
+   --border-color: #fff;
+ }
+ 
+
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition:
+    background-color var(--transition-speed) var(--transition-type),
+    color var(--transition-speed) var(--transition-type),
+    border-color var(--transition-speed) var(--transition-type);
 }
 
-:root {
-   --bg-color: #ffffff;
-   --text-color: #7a7a7a;
-   --primary-color: #007bff;
- }
- 
- body {
-   background-color: var(--bg-color);
-   color: var(--text-color);
-   transition: background-color 0.3s ease, color 0.3s ease;
- }
- 
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+}
 
- a {
-   text-decoration: none;
-   color: inherit;
- }
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
