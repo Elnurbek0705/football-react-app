@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Stack, TextField } from "@mui/material";
-import { logo, logoDark } from "../constants";
-import ThemeSwitchButton from "./ThemeSwitchButton";
-import styles from "../constants/styles";
-import { useTheme } from "../context/ThemeContex";
-import "./style.css";
-import UserAvatar from "./UserAvatar";
+import { logo, logoDark } from "../../constants";
+import ThemeSwitchButton from "../ThemeSwitchButton";
+import styles from "../../constants/styles";
+import { useTheme } from "../../context/ThemeContex";
+import "../style.css";
+import UserAvatar from "../UserAvatar";
 
 const Navbar = () => {
   const location = useLocation();

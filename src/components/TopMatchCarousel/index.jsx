@@ -1,7 +1,7 @@
 import Carousel from "react-bootstrap/Carousel";
 import { Skeleton } from "@mui/material";
-import useFetchTopMatches from "../hooks/useFetchTopMatches";
-import { formatMatchTime } from "../utils/formatMatchTime";
+import useFetchTopMatches from "../../hooks/useFetchTopMatches";
+import { formatMatchTime } from "../../utils/formatMatchTime";
 
 const TopMatchCarousel = () => {
   const { topMatches, loading } = useFetchTopMatches();

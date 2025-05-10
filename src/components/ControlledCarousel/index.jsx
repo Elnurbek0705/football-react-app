@@ -1,7 +1,7 @@
 import { useState } from "react";
-import TopMatchCarousel from "./TopMatchCarousel";
+import TopMatchCarousel from "../TopMatchCarousel";
 import { Stack } from "@mui/material";
-import { useTheme } from "../context/ThemeContex";
+import { useTheme } from "../../context/ThemeContex";
 
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);

@@ -12,10 +12,10 @@ import {
 } from "@mui/material";
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useTheme } from "../context/ThemeContex";
-import useFetchCompetitions from "../hooks/useFetchCompetitions";
+import { useTheme } from "../../context/ThemeContex";
+import useFetchCompetitions from "../../hooks/useFetchCompetitions";
 
-import "./style.css"; //
+import "../style.css";
 
 const TopLeaguesAccordion = () => {
   const { competitions, loading } = useFetchCompetitions();
