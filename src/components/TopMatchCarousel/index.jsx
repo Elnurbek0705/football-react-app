@@ -1,10 +1,35 @@
 import Carousel from "react-bootstrap/Carousel";
-import { Skeleton } from "@mui/material";
+import { Grid, Skeleton } from "@mui/material";
 import useFetchTopMatches from "../../hooks/useFetchTopMatches";
 import { formatMatchTime } from "../../utils/formatMatchTime";
+import useCompetitionStore from "../../store/useCompetitionStore";
+import useFilteredMatches from "../../hooks/useFilteredMatches";
+import { useEffect, useState } from "react";
+import "./style.css";
 
 const TopMatchCarousel = () => {
-  const { topMatches, loading } = useFetchTopMatches();
+  const { topMatches, loading: loadingTopMatches } = useFetchTopMatches();
+  const { loading: loadingFilteredMatches } = useFilteredMatches();
+  const loading = loadingTopMatches || loadingFilteredMatches;
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
+  const { selectedCompetitionId } = useCompetitionStore();
+
+  const filteredMatches = selectedCompetitionId
+    ? topMatches.filter((match) => match.competition.id === selectedCompetitionId)
+    : topMatches;
+
+  useEffect(() => {
+    if (filteredMatches.length === 0) {
+      setIndex(0);
+    } else if (index >= filteredMatches.length) {
+      setIndex(0);
+    }
+  }, [filteredMatches, index]);
 
   if (loading) {
     return (
@@ -17,33 +42,55 @@ const TopMatchCarousel = () => {
   }
 
   return (
-    <Carousel interval={3000} wrap>
-      {topMatches.length === 0 && (
+    <Carousel
+    style={{wordWrap: "break-word"}}
+      className="main__carousel"
+      activeIndex={index}
+      onSelect={handleSelect}
+      interval={30000}
+      wrap
+    >
+      {filteredMatches.length === 0 && (
         <Carousel.Item>
           <div style={{ padding: "30px", textAlign: "center" }}>
-            <h5>Bugun uchun top matchlar mavjud emas</h5>
+            <h5>Bugun ushbu liga uchun matchlar mavjud emas</h5>
           </div>
         </Carousel.Item>
       )}
 
-      {topMatches.map((match) => (
+      {filteredMatches.map((match) => (
         <Carousel.Item key={match.id}>
-          <div style={{ padding: "20px", textAlign: "center" }}>
-            <div className="team__emblems">
-              <div className="team__emblem">
-                <img src={match.homeTeam.crest} alt="team__emblem" />
+          <Grid className="match__grid">
+            <Grid container xs={12} sm={6} md={4} lg={3}>
+              <div className="emblems">
+                <div className="emblem">
+                  <img src={match.homeTeam.crest} alt="emblem" />
+                </div>
+                <b>vs</b>
+                <div className="emblem">
+                  <img src={match.awayTeam.crest} alt="emblem" />
+                </div>
+                <div className="emblem match__Time">{formatMatchTime(match.utcDate)}</div>
               </div>
-              <b>vs</b>
-              <div className="team__emblem">
-                <img src={match.awayTeam.crest} alt="team__emblem" />
+              <div style={{ padding: "20px" }}>
+                <h4>{match.competition.name}</h4>
+                <h4>
+                  <b>
+                    {match.homeTeam.shortName} vs {match.awayTeam.shortName}
+                  </b>
+                </h4>
               </div>
-              <div className="team__emblem match__Time">{formatMatchTime(match.utcDate)}</div>
-            </div>
-            <h5>{match.competition.name}</h5>
-            <h3>
-              {match.homeTeam.name} vs {match.awayTeam.name}
-            </h3>
-          </div>
+            </Grid>
+            <Grid display={"grid"} justifyContent="center" alignItems="center">
+              <img
+                width={200}
+                height={200}
+                style={{ borderTopLeftRadius: "45%" }}
+                src={match.competition.emblem}
+                alt="Legue emblem"
+              />
+            </Grid>
+          </Grid>
         </Carousel.Item>
       ))}
     </Carousel>

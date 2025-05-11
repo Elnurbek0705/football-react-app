@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Stack, TextField } from "@mui/material";
-import { logo, logoDark } from "../../constants";
+import { logo } from "../../constants";
 import ThemeSwitchButton from "../ThemeSwitchButton";
 import styles from "../../constants/styles";
 import { useTheme } from "../../context/ThemeContex";
@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <Stack className="navbar" sx={{ ...styles.flexRow }} spacing={0} padding={2}>
       <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-        <img src={isLight ? logoDark : logo} alt="Logo" style={{ height: 40, marginRight: 8 }} />
+        <img src={logo} alt="Logo" style={{ height: 40, marginRight: 8 }} />
       </Link>
       <input type="text" className="navbar__search button_styles" placeholder="Search..." />
 

@@ -1,11 +1,13 @@
-import { getAllMatches } from "../services/api";
+import { getAllMatches, getCompetitions } from "../services/api";
 import { create } from "zustand";
-import { getCompetitions } from "../services/api";
 
-const useCompetitionStore = create((set) => ({
+const useCompetitionStore = create((set, get) => ({
   competitions: [],
   competitionsFetched: false,
   competitionsLoading: false,
+
+  selectedCompetitionId: "",
+  setSelectedCompetitionId: (id) => set({ selectedCompetitionId: id }),
 
   topMatches: [],
   topMatchesFetched: false,
@@ -13,15 +15,19 @@ const useCompetitionStore = create((set) => ({
 
   fullData: null,
 
+  // Filter today + liga bo‘yicha
+  getMatchesByCompetition: (competitionId) => {
+    const { topMatches } = get();
+    return topMatches.filter((match) => match.competition.id === competitionId);
+  },
+
   fetchCompetitions: async () => {
     set({ competitionsLoading: true });
     try {
       const data = await getCompetitions();
-      const allowedIds = [2021, 2001, 2018, 2015, 2002, 2019, 2014, 2000];
-      const filtered = data.competitions.filter((comp) => allowedIds.includes(comp.id));
 
       set({
-        competitions: filtered,
+        competitions: data.competitions, // ← Barcha ligalar
         fullData: data,
         competitionsFetched: true,
       });
@@ -49,6 +55,11 @@ const useCompetitionStore = create((set) => ({
     } finally {
       set({ topMatchesLoading: false });
     }
+  },
+
+  // 🆕 BARCHA MAʼLUMOTLARNI BIR YO‘LA FETCH QILISH
+  fetchAllInitialData: async () => {
+    await Promise.all([get().fetchCompetitions(), get().fetchTopMatches()]);
   },
 }));
 
