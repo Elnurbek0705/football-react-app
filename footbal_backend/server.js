@@ -8,10 +8,10 @@ const PORT = 5000;
 
 app.use(cors({ credentials: true, origin: true }));
 
+
 const API_KEY = process.env.API_KEY;
 const BASE_URL = "https://api.football-data.org/v4";
 
-// 🟢 Barcha matchlar
 app.get("/api/matches", async (req, res) => {
   try {
     const response = await axios.get(`${BASE_URL}/matches`, {
@@ -23,7 +23,6 @@ app.get("/api/matches", async (req, res) => {
   }
 });
 
-// 🟢 Ma'lum bir musobaqadagi matchlar
 app.get("/api/competitions/:code/matches", async (req, res) => {
   try {
     const { code } = req.params;
@@ -36,7 +35,6 @@ app.get("/api/competitions/:code/matches", async (req, res) => {
   }
 });
 
-// 🟢 Jamoaga tegishli matchlar (SCHEDULED)
 app.get("/api/teams/:id/matches", async (req, res) => {
   try {
     const { id } = req.params;
@@ -49,7 +47,6 @@ app.get("/api/teams/:id/matches", async (req, res) => {
   }
 });
 
-// 🟢 Musobaqalar ro'yxati
 app.get("/api/competitions", async (req, res) => {
   try {
     const response = await axios.get(`${BASE_URL}/competitions`, {
@@ -61,7 +58,6 @@ app.get("/api/competitions", async (req, res) => {
   }
 });
 
-// 🔴 STANDINGS endpointdagi xatolikni tuzatildi
 app.get("/api/competitions/:id/standings", async (req, res) => {
   try {
     const { id } = req.params;

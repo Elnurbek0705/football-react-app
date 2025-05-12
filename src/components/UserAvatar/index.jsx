@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Avatar, Menu, MenuItem } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
+import "./style.css";
 
 const UserAvatar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -15,11 +16,12 @@ const UserAvatar = () => {
 
   return (
     <>
-      <Avatar onClick={handleClick} sx={{ bgcolor: "#1976d2", cursor: "pointer" }}>
-        <AccountCircle sx={{ fontSize: 32, color: "#fff",}} />
+      <Avatar onClick={handleClick} className="avatar">
+        <AccountCircle />
       </Avatar>
 
       <Menu
+        className="avatar__menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}

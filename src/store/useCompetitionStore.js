@@ -15,7 +15,6 @@ const useCompetitionStore = create((set, get) => ({
 
   fullData: null,
 
-  // Filter today + liga bo‘yicha
   getMatchesByCompetition: (competitionId) => {
     const { topMatches } = get();
     return topMatches.filter((match) => match.competition.id === competitionId);
@@ -27,7 +26,7 @@ const useCompetitionStore = create((set, get) => ({
       const data = await getCompetitions();
 
       set({
-        competitions: data.competitions, // ← Barcha ligalar
+        competitions: data.competitions,
         fullData: data,
         competitionsFetched: true,
       });
@@ -57,7 +56,6 @@ const useCompetitionStore = create((set, get) => ({
     }
   },
 
-  // 🆕 BARCHA MAʼLUMOTLARNI BIR YO‘LA FETCH QILISH
   fetchAllInitialData: async () => {
     await Promise.all([get().fetchCompetitions(), get().fetchTopMatches()]);
   },

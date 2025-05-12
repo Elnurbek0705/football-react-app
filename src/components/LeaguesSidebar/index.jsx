@@ -21,7 +21,7 @@ const LeaguesSidebar = () => {
 
   const handleSelect = (id) => {
     if (selectedCompetitionId !== id) {
-      setSelectedCompetitionId(id); // tanlangan ligani yangilaymiz
+      setSelectedCompetitionId(id);
     }
   };
 

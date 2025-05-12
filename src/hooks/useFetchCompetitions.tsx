@@ -1,4 +1,3 @@
-// hooks/useFetchCompetitions.ts
 import { useEffect } from "react";
 import useCompetitionStore from "../store/useCompetitionStore";
 
