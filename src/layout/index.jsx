@@ -1,12 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Navbar, LeaguesSidebar } from "../";
+import { Navbar, LeaguesSidebar } from "../components";
 
 const Layout = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: 'space-between' }}>
       <Navbar />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 11fr', padding: '10px', gap: '10px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 11fr', padding: '85px 10px 10px', gap: '20px' }}>
         <div style={{ width: "350px"}}>
           <LeaguesSidebar />
         </div>

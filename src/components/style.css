@@ -1,5 +1,11 @@
 .navbar {
   background-color: var(--navbar-bg);
+  position: fixed !important;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 2px 2px 5px var(--button-bg);
 }
 
 .navbar__search {
@@ -31,31 +37,34 @@ navbar__search:focus-visible {
   background-color: var(--primary-color);
 }
 
-
 /* Sidebar style */
 .sidebar {
-  width: 100%;
+  width: 350px;
+  margin-top: 85px;
+  padding-bottom: 10px;
   background-color: var(--navbar-bg);
   color: var(--text-color);
-  box-shadow: 5px 5px 7px var(--button-bg);
-  height: 100%;
+  box-shadow: 2px 2px 5px var(--button-bg);
+  height: 88vh;
   overflow-y: auto;
-  position: sticky;
+  position: fixed;
   top: 0;
 }
 .sidebar__title {
   font-size: 1.25rem;
   padding: 10px 20px;
-  box-shadow: 0 0px 5px 7px var(--button-bg);
+  box-shadow: 2px 2px 5px var(--button-bg);
   background-color: var(--navbar-bg);
   z-index: 1;
   position: sticky;
+  width: 100%;
   top: 0;
+  right: 0;
 }
 
 .sidebar__item {
   padding: 10px 0;
-  transition: background-color 0.3s ease;
+  border-top: 1px solid var(--button-bg);
 }
 
 .sidebar__item:hover {
@@ -64,6 +73,7 @@ navbar__search:focus-visible {
 
 .sidebar__item--selected {
   background-color: var(--primary-color);
+  font-weight: bold;
 }
 
 .sidebar__logo-wrapper {
@@ -81,6 +91,10 @@ navbar__search:focus-visible {
   font-weight: 500;
 }
 
+.sidebar__text.selected {
+  font-weight: bold;
+}
+
 .sidebar__empty {
   display: flex;
   justify-content: center;
@@ -93,9 +107,6 @@ navbar__search:focus-visible {
   font-size: 40px;
   margin-bottom: 10px;
 }
-
-
-
 
 /* TopLeaguesAccordion*/
 
@@ -161,4 +172,28 @@ navbar__search:focus-visible {
 
 .accordion__text.selected {
   font-weight: bold;
+}
+
+
+/* Tabs */
+
+.tabs__header {
+  background-color: var(--navbar-bg);
+  box-shadow: 2px 2px 5px var(--button-bg);
+  border-radius: 15px;
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+.tabs__header .css-19kzrtu{
+   padding: 10px 0;
+}
+
+.tabs__header .MuiTabs-flexContainer {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tabs__header .MuiTabs-flexContainer button {
+   color: var(--text-color);
 }

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Loader, Tabs, LeaguesSidebar, TopMatchCarousel } from "../components";
-import { Grid, Skeleton } from "@mui/material";
 import useCompetitionStore from "../store/useCompetitionStore";
 
 const Home = () => {
@@ -28,12 +27,12 @@ const Home = () => {
     );
   }
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "10px" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "20px" }}>
       <div>
         <TopMatchCarousel />
         <Tabs />
       </div>
-      <LeaguesSidebar />
+      {/* <LeaguesSidebar /> */}
     </div>
   );
 };

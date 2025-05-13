@@ -6,7 +6,7 @@ const useCompetitionStore = create((set, get) => ({
   competitionsFetched: false,
   competitionsLoading: false,
 
-  selectedCompetitionId: "",
+  selectedCompetitionId: 2021,
   setSelectedCompetitionId: (id) => set({ selectedCompetitionId: id }),
 
   topMatches: [],
@@ -15,7 +15,7 @@ const useCompetitionStore = create((set, get) => ({
 
   fullData: null,
 
-  getMatchesByCompetition: (competitionId) => {
+  getMatchesByCompetition: (  ) => {
     const { topMatches } = get();
     return topMatches.filter((match) => match.competition.id === competitionId);
   },
