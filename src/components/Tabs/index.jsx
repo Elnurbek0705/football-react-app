@@ -54,21 +54,41 @@ export default function BasicTabs() {
       <div
         key={match.id}
         style={{
-          padding: "12px 24px",
+          padding: "12px",
           background: "var(--button-bg)",
-          borderRadius: "8px",
-          marginBottom: "10px",
-          display: "flex",
-         //  justifyContent: "center",
+          marginBottom: "2px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
           alignItems: "center",
         }}
       >
-        <div className="emblem" style={{ margin: "0 10px" }}>
-          <img src={match.homeTeam.crest} alt="emblem" />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="emblem" style={{ margin: "0 10px" }}>
+            <img src={match.homeTeam.crest} alt="emblem" />
+          </div>
+          <strong>{match.homeTeam.shortName}</strong>
         </div>
-        <strong>{match.homeTeam.shortName} vs {match.awayTeam.shortName}</strong>
-        <div className="emblem" style={{ margin: "0 10px" }}>
-          <img src={match.awayTeam.crest} alt="emblem" />
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <span
+            style={{
+              width: "40px",
+              height: "40px",
+              lineHeight: "20px",
+              backgroundColor: "var(--bg-color)",
+              borderRadius: "50%",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            vs
+          </span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          {match.awayTeam.shortName}
+          <div className="emblem" style={{ margin: "0 10px" }}>
+            <img src={match.awayTeam.crest} alt="emblem" />
+          </div>
         </div>
       </div>
     ));
