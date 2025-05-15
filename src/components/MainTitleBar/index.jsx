@@ -1,12 +1,8 @@
-import React from "react";
 import { formatDate } from "../../utils/formatDate";
-import useCompetitionStore from "../../store/useCompetitionStore";
-import useFetchTopMatches from "../../hooks/useFetchTopMatches";
 import useSelectedCompetition from "../../hooks/useSelectedCompetition";
 
 const MainTitleBar = () => {
   const { matches, competition } = useSelectedCompetition();
-  console.log(matches);
 
   const today = formatDate(new Date());
   console.log(today);
@@ -24,7 +20,7 @@ const MainTitleBar = () => {
       }}
     >
       
-      <h1 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>{competition.name} ({competition.area.name})</h1>
+      <h1 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>{competition?.name} ({competition?.area?.name})</h1>
       <h2 style={{ fontSize: "20px", fontWeight: "bold", margin: "0" }}>{today}</h2>
     </div>
   );

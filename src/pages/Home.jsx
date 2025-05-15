@@ -27,7 +27,7 @@ const Home = () => {
     );
   }
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "20px" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "2fr", gap: "20px" }}>
       <div>
         <TopMatchCarousel />
         <Tabs />

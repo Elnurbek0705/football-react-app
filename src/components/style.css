@@ -28,6 +28,7 @@ navbar__search:focus-visible {
   color: var(--text-color) !important;
   border-radius: 15px !important;
   padding: 0.5rem 1.5rem !important;
+  background-color: var(--button-bg) !;
 }
 
 .navbar button {
@@ -196,4 +197,8 @@ navbar__search:focus-visible {
 
 .tabs__header .MuiTabs-flexContainer button {
    color: var(--text-color);
+   width: 100%;
+   max-width: 600px;
 }
+
+/* Table */

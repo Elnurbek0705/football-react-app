@@ -60,7 +60,7 @@ const TopMatchCarousel = () => {
                 <h4>{match.competition.name}</h4>
                 <h4>
                   <b>
-                    {match.homeTeam.shortName} vs {match.awayTeam.shortName}
+                    {match.homeTeam.name} vs {match.awayTeam.name}
                   </b>
                 </h4>
               </div>

@@ -5,6 +5,9 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import MainTitleBar from "../MainTitleBar";
 import useFilteredMatches from "../../hooks/useFilteredMatches";
+import { formatMatchTime } from "../../utils/formatMatchTime";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,14 +55,16 @@ export default function BasicTabs() {
 
     return matches.map((match) => (
       <div
+        className="tabs"
         key={match.id}
         style={{
           padding: "12px",
           background: "var(--button-bg)",
           marginBottom: "2px",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
+          gridTemplateColumns: "4fr .5fr 4fr 2.5fr 1fr",
           alignItems: "center",
+          gap: "10px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -90,6 +95,18 @@ export default function BasicTabs() {
             <img src={match.awayTeam.crest} alt="emblem" />
           </div>
         </div>
+        <div className="emblem match__Time">{formatMatchTime(match.utcDate)}</div>
+        <Link
+          to="/table"
+          style={{
+            textDecoration: "none",
+            background: "var(--primary-color)",
+            borderRadius: "15px",
+            marginRight: "12px",
+          }}
+        >
+          <Button className="button_styles">Table</Button>
+        </Link>
       </div>
     ));
   };

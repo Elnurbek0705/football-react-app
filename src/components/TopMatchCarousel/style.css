@@ -1,10 +1,8 @@
-
-
 .match__grid {
-   display: grid;
-   grid-template-columns: 1.7fr 1fr;
-   gap: 20px;
-   padding: 20px;
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 20px;
+  padding: 20px;
 }
 .match__grid-item {
   background-color: #f0f0f0;
@@ -44,7 +42,6 @@
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }
 
-
 /* carousel */
 
 .main__carousel {
@@ -67,12 +64,19 @@
   margin-bottom: 10px;
 }
 
-.emblems div.match__Time {
+.emblems div.match__Time,
+.tabs div.match__Time {
   width: 230px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  border: 5px solid var(--button-bg);
+}
+
+.tabs div.match__Time {
+  font-size: 16px;
+  width: auto;
 }
 
 .emblem {

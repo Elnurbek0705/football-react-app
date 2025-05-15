@@ -4,8 +4,8 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContex";
 import { muiTheme } from "./theme";
-import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles"; // MUI theme provider
-import CssBaseline from "@mui/material/CssBaseline"; // Reset CSS
+import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
