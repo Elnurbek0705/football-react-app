@@ -70,6 +70,19 @@ app.get("/api/competitions/:id/standings", async (req, res) => {
   }
 });
 
+app.get("/api/competitions/:code/scorers", async (req, res) => {
+  try {
+    const { code } = req.params;
+    const response = await axios.get(`${BASE_URL}/competitions/${code}/scorers`, {
+      headers: { "X-Auth-Token": API_KEY },
+    });
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`✅ Server ishga tushdi: http://localhost:${PORT}`);
 });

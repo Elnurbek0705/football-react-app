@@ -1,4 +1,4 @@
-import { getAllMatches, getCompetitions } from "../services/api";
+import { getAllMatches, getCompetitions, getCompetitionTopScorers } from "../services/api";
 import { create } from "zustand";
 
 const useCompetitionStore = create((set, get) => ({
@@ -15,16 +15,37 @@ const useCompetitionStore = create((set, get) => ({
 
   fullData: null,
 
-  getMatchesByCompetition: (  ) => {
-    const { topMatches } = get();
-    return topMatches.filter((match) => match.competition.id === competitionId);
+  // 🆕 Top Scorers
+  topScorers: [],
+  topScorersFetched: false,
+  topScorersLoading: false,
+
+  fetchTopScorers: async () => {
+    const { selectedCompetitionId } = get();
+    set({ topScorersLoading: true });
+
+    try {
+      const data = await getCompetitionTopScorers(selectedCompetitionId);
+      set({
+        topScorers: data.scorers,
+        topScorersFetched: true,
+      });
+    } catch (err) {
+      console.error("❌ Top Scorers olishda xatolik:", err);
+    } finally {
+      set({ topScorersLoading: false });
+    }
+  },
+
+  getMatchesByCompetition: () => {
+    const { topMatches, selectedCompetitionId } = get();
+    return topMatches.filter((match) => match.competition.id === selectedCompetitionId);
   },
 
   fetchCompetitions: async () => {
     set({ competitionsLoading: true });
     try {
       const data = await getCompetitions();
-
       set({
         competitions: data.competitions,
         fullData: data,
@@ -43,7 +64,9 @@ const useCompetitionStore = create((set, get) => ({
       const data = await getAllMatches();
       const today = new Date().toISOString().split("T")[0];
 
-      const topMatches = data.matches.filter((match) => match.utcDate.split("T")[0] === today);
+      const topMatches = data.matches.filter(
+        (match) => match.utcDate.split("T")[0] === today
+      );
 
       set({
         topMatches,
@@ -57,7 +80,11 @@ const useCompetitionStore = create((set, get) => ({
   },
 
   fetchAllInitialData: async () => {
-    await Promise.all([get().fetchCompetitions(), get().fetchTopMatches()]);
+    await Promise.all([
+      get().fetchCompetitions(),
+      get().fetchTopMatches(),
+      get().fetchTopScorers(), // 🆕 Boshida top scorersni ham yuklab olish
+    ]);
   },
 }));
 

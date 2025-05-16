@@ -2,7 +2,7 @@ import { formatDate } from "../../utils/formatDate";
 import useSelectedCompetition from "../../hooks/useSelectedCompetition";
 
 const MainTitleBar = () => {
-  const { matches, competition } = useSelectedCompetition();
+  const { competition } = useSelectedCompetition();
 
   const today = formatDate(new Date());
   console.log(today);
@@ -10,7 +10,6 @@ const MainTitleBar = () => {
     <div
       style={{
         color: "var(--text-color)",
-        margin: "20px 0",
         backgroundColor: "var(--navbar-bg)",
         padding: "20px",
         fontSize: "20",

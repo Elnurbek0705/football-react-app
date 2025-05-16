@@ -21,7 +21,7 @@ const TopMatchCarousel = () => {
 
   return (
     <Carousel
-      style={{ wordWrap: "break-word" }}
+      style={{ wordWrap: "break-word", marginBottom: '20px' }}
       className="main__carousel"
       activeIndex={index}
       onSelect={handleSelect}

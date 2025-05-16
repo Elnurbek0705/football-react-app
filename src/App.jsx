@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Table from "./pages/Table";
-import TopPlayers from "./pages/TopPlayers";
+import TopScorers from "./pages/TopScorers";
 import Layout from "./layout";
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="table" element={<Table />} />
-        <Route path="top-players" element={<TopPlayers />} />
+        <Route path="top-scorers" element={<TopScorers />} />
       </Route>
     </Routes>
   );

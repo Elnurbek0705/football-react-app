@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getCompetitionStandings } from "../services/api";
 import useCompetitionStore from "../store/useCompetitionStore";
+import MainTitleBar from "../components/MainTitleBar";
 
 const columns = [
   { label: "#", key: "position" },
@@ -117,7 +118,7 @@ const Table = () => {
   return (
     <TableWrapper>
       <h1 className="text-2xl font-bold mb-4">
-        {competitions.find(c => c.id === selectedCompetitionId)?.name || "Standings"}
+        <MainTitleBar />
       </h1>
       <div style={{ overflowX: "auto" }}>
         <StyledTable>

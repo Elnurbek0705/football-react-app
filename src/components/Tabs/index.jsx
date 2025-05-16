@@ -116,7 +116,7 @@ export default function BasicTabs() {
       <MainTitleBar />
       <Box
         className="tabs__header"
-        sx={{ width: "100%", backgroundColor: "var(--navbar-bg)", padding: "0" }}
+        sx={{ width: "100%", backgroundColor: "var(--navbar-bg)", padding: "0", marginTop: '20px' }}
       >
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs

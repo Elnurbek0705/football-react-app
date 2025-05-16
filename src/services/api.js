@@ -26,3 +26,8 @@ export const getCompetitionStandings = async (competitionId) => {
   const res = await axios.get(`${BASE_URL}/competitions/${competitionId}/standings`);
   return res.data;
 };
+
+export const getCompetitionTopScorers = async (competitionCode) => {
+  const res = await axios.get(`${BASE_URL}/competitions/${competitionCode}/scorers`);
+  return res.data;
+};
