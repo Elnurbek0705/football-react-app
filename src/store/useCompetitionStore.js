@@ -83,7 +83,7 @@ const useCompetitionStore = create((set, get) => ({
     await Promise.all([
       get().fetchCompetitions(),
       get().fetchTopMatches(),
-      get().fetchTopScorers(), // 🆕 Boshida top scorersni ham yuklab olish
+      get().fetchTopScorers(),
     ]);
   },
 }));
