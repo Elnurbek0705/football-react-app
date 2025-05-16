@@ -1,4 +1,8 @@
-import { getAllMatches, getCompetitions, getCompetitionTopScorers } from "../services/api";
+import {
+  getAllMatches,
+  getCompetitions,
+  getCompetitionTopScorers,
+} from "../services/api";
 import { create } from "zustand";
 
 const useCompetitionStore = create((set, get) => ({
@@ -15,7 +19,6 @@ const useCompetitionStore = create((set, get) => ({
 
   fullData: null,
 
-  // 🆕 Top Scorers
   topScorers: [],
   topScorersFetched: false,
   topScorersLoading: false,
@@ -26,6 +29,13 @@ const useCompetitionStore = create((set, get) => ({
 
     try {
       const data = await getCompetitionTopScorers(selectedCompetitionId);
+
+      if (!data || !Array.isArray(data.scorers)) {
+        console.error("❌ Top Scorers noto‘g‘ri format:", data);
+        set({ topScorers: [], topScorersFetched: true });
+        return;
+      }
+
       set({
         topScorers: data.scorers,
         topScorersFetched: true,
@@ -39,13 +49,24 @@ const useCompetitionStore = create((set, get) => ({
 
   getMatchesByCompetition: () => {
     const { topMatches, selectedCompetitionId } = get();
-    return topMatches.filter((match) => match.competition.id === selectedCompetitionId);
+    if (!Array.isArray(topMatches)) return [];
+
+    return topMatches.filter(
+      (match) => match?.competition?.id === selectedCompetitionId
+    );
   },
 
   fetchCompetitions: async () => {
     set({ competitionsLoading: true });
     try {
       const data = await getCompetitions();
+
+      if (!data || !Array.isArray(data.competitions)) {
+        console.error("❌ competitions noto‘g‘ri format:", data);
+        set({ competitions: [], competitionsFetched: true });
+        return;
+      }
+
       set({
         competitions: data.competitions,
         fullData: data,
@@ -62,10 +83,17 @@ const useCompetitionStore = create((set, get) => ({
     set({ topMatchesLoading: true });
     try {
       const data = await getAllMatches();
+
+      if (!data || !Array.isArray(data.matches)) {
+        console.error("❌ matches noto‘g‘ri format:", data);
+        set({ topMatches: [], topMatchesFetched: true });
+        return;
+      }
+
       const today = new Date().toISOString().split("T")[0];
 
       const topMatches = data.matches.filter(
-        (match) => match.utcDate.split("T")[0] === today
+        (match) => match.utcDate?.split("T")[0] === today
       );
 
       set({
@@ -80,11 +108,13 @@ const useCompetitionStore = create((set, get) => ({
   },
 
   fetchAllInitialData: async () => {
-    await Promise.all([
-      get().fetchCompetitions(),
-      get().fetchTopMatches(),
-      get().fetchTopScorers(),
-    ]);
+    try {
+      await get().fetchCompetitions();
+      await get().fetchTopMatches();
+      await get().fetchTopScorers();
+    } catch (err) {
+      console.error("❌ Barcha ma'lumotlarni yuklashda xatolik:", err);
+    }
   },
 }));
 
