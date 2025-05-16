@@ -16,7 +16,7 @@ const UserAvatar = () => {
 
   return (
     <>
-      <Avatar onClick={handleClick} className="avatar">
+      <Avatar onClick={handleClick} className="avatar" style={{cursor: 'pointer'}}>
         <AccountCircle />
       </Avatar>
 
