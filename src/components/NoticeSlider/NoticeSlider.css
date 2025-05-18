@@ -1,8 +1,8 @@
 .notice-container {
   width: 100%;
   overflow: hidden;
-  background-color: var(--button-bg);
-  backdrop-filter: blur(5px);
+  background-color: var(--notice-bg);
+  backdrop-filter: blur(2px);
   border: 1px solid #30303094;
   padding: 2px 0;
   position: fixed;

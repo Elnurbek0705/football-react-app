@@ -1,6 +1,6 @@
 :root {
   --bg-color: #f9f9f9 !important;
-  --notice-bg: #f9f9f98b !important;
+  --notice-bg: #f9f9f94d !important;
   --text-color: #1e1e1e;
   --primary-color: #4f46e5;
   --primary-color: #8a3ffc;
@@ -23,7 +23,7 @@
 .dark {
   --carousel-bg: url("./assets/carousel_bg.svg");
   --bg-color: #0b090a !important;
-   --notice-bg: #0b090a8b !important;
+   --notice-bg: #0b090a4c !important;
   --text-color: #e5e7eb;
   --primary-color: #4f46e5;
   --navbar-bg: #121212;

@@ -18,11 +18,11 @@ const StyledWrapper = styled.div`
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6); /* Orqa fon (ixtiyoriy) */
+  background: var(--notice-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 1000000;
 
   .loader {
     --size: 250px;
@@ -70,7 +70,7 @@ const StyledWrapper = styled.div`
   }
 
   .text {
-    color: #949494;
+    color: var(--text-color);
     margin: 30px auto;
     text-align: center;
     font-weight: 500;
