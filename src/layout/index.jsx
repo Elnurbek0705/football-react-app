@@ -12,7 +12,7 @@ const Layout = () => {
         justifyContent: "space-between",
       }}
     >
-      <NoticeSlider message="Ushbu sayt test rejimida ishlayabdi.        This site is in test mode.        Этот сайт находится в тестовом режиме." />
+      {/* <NoticeSlider message="Ushbu sayt test rejimida ishlayabdi.        This site is in test mode.        Этот сайт находится в тестовом режиме." /> */}
       <Navbar />
       <div
         style={{
