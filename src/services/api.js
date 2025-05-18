@@ -1,10 +1,12 @@
 import axios from "axios";
 
+// Bazaviy konfiguratsiya
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 // Axios instans yaratish
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: BASE_URL,
   timeout: 10000,
   headers: {
     "X-Auth-Token": API_KEY,
@@ -12,7 +14,6 @@ const api = axios.create({
     Accept: "application/json",
   },
 });
-
 
 // Hamma o'yinlarni olish
 export const getAllMatches = async () => {

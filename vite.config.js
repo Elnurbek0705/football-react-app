@@ -3,14 +3,14 @@ import preact from "@preact/preset-vite";
 
 export default defineConfig({
   plugins: [preact()],
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://api.football-data.org/v4',
-        changeOrigin: true,
-        secure: true, // bu yerda `true`, chunki https ishlatilmoqda
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
-  }
+//   server: {
+//     proxy: {
+//       '/api': {
+//         target: 'https://api.football-data.org/v4',
+//         changeOrigin: true,
+//         secure: true, // bu yerda `true`, chunki https ishlatilmoqda
+//         rewrite: (path) => path.replace(/^\/api/, '')
+//       }
+//     }
+//   }
 });
