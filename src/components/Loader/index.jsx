@@ -19,6 +19,7 @@ const StyledWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background: var(--notice-bg);
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
