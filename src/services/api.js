@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// const BASE_URL = import.meta.env.VITE_BASE_URL;
-const BASE_URL = 'http://localhost:5000/api'
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const getAllMatches = async () => {
   const res = await axios.get(`${BASE_URL}/matches`);
