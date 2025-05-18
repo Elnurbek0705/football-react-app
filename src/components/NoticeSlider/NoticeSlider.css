@@ -1,0 +1,30 @@
+.notice-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--button-bg);
+  backdrop-filter: blur(5px);
+  border: 1px solid #30303094;
+  padding: 2px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.notice-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%; /* boshlang'ich joylashuv */
+  animation: marquee 15s linear infinite;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
