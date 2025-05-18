@@ -6,9 +6,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://footballbackend-production-0aac.up.railway.app/',
+        target: 'https://api.football-data.org/v4',
         changeOrigin: true,
-        secure: false,
+        secure: true, // bu yerda `true`, chunki https ishlatilmoqda
         rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
