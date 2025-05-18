@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://footballbackend-production-cd40.up.railway.app',
+        target: 'https://footballbackend-production-0aac.up.railway.app/',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, '')
